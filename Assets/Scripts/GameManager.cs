@@ -47,6 +47,16 @@ public class GameManager : MonoBehaviour {
         timerShadow.text = timerText.text;
 	}
 
+
+    public void TogglePauseMenu(bool setActive)
+    {
+        pauseMenu.SetActive(setActive);
+        pauseMenuActive = setActive;
+
+        if (setActive) Time.timeScale = 0f;
+        else Time.timeScale = 1.0f;
+    }
+
     public void TogglePauseMenu(bool setActive, string title = "Pause", bool resumeActive = true)
     {
         resumeButton.interactable = resumeActive;
