@@ -16,6 +16,7 @@ Barreus is a platform-shooter game created in 48 hours for the Ludum Dare 40 gam
 **Linux**: [http://jorditudela.net/ludumdare/ld40/Barreus_Linux.zip](http://jorditudela.net/ludumdare/ld40/Barreus_Linux.zip)
 
 Untested builds:
+
 **macOS X Universal**: [http://jorditudela.net/ludumdare/ld40/Barreus_OSX_Universal.zip](http://jorditudela.net/ludumdare/ld40/Barreus_OSX_Universal.zip)
 
 **macOS X 86_64**: [http://jorditudela.net/ludumdare/ld40/Barreus_OSX_64.zip](http://jorditudela.net/ludumdare/ld40/Barreus_OSX_64.zip)
