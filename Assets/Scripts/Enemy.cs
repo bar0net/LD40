@@ -51,7 +51,7 @@ public class Enemy : Character {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && this.health > 0)
         {
             collision.gameObject.GetComponent<Character>().Damage(damage);
 
@@ -74,7 +74,14 @@ public class Enemy : Character {
         _rb.constraints = RigidbodyConstraints2D.FreezeAll;
         foreach (Collider2D c in GetComponentsInChildren<Collider2D>()) c.enabled = false;
 
-        foreach (SpriteRenderer sr in _sr) sr.sortingLayerName = "Background";
+        foreach (SpriteRenderer sr in _sr)
+        {
+            sr.sortingLayerName = "Background";
+            sr.sortingOrder = 100;
+        }
         foreach (Bullet b in GetComponentsInChildren<Bullet>()) Destroy(b.gameObject);
+
+        foreach (Collider2D c in GetComponents<Collider2D>()) c.enabled = false;
+        foreach (Collider2D c in GetComponentsInChildren<Collider2D>()) c.enabled = false;
     }
 }
