@@ -37,6 +37,10 @@ public class Crate : MonoBehaviour {
                 this.enabled = false;
                 _sr.sprite = destroyedBox;
 
+                Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                if (rb != null) rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+
                 if (drop != null && Random.value < dropRate)
                 {
                     GameObject go = (GameObject)Instantiate(drop, this.transform.position + 0.5f * Vector3.up , Quaternion.identity);

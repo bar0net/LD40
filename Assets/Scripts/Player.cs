@@ -29,9 +29,12 @@ public class Player : Character {
     public bool undying = false; // Deactivate on release!!!
 
     private bool grounded = true;
+    private bool canJump = true;
+    private float jumpTimer = 0;
+
+
     private bool lookingRight = true;
     private Animator _anim;
-    private float jumpTimer = 0;
 
     private void Start()
     {
@@ -82,6 +85,7 @@ public class Player : Character {
         {
             _rb.gravityScale = 1.0f;
             grounded = true;
+            canJump = true;
             jumpTimer = jumpDelay;
             _anim.SetBool("Grounded", true);
         }
@@ -89,7 +93,11 @@ public class Player : Character {
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Terrain" && !grounded) _anim.SetBool("Grounded", false);
+        if (other.tag == "Terrain")
+        {
+            grounded = false;
+            _anim.SetBool("Grounded", false);
+        }
     }
 
     private void MovementControl()
@@ -116,9 +124,9 @@ public class Player : Character {
 
 
 
-        if (Input.GetButtonDown("Jump") && grounded && jumpTimer <= 0)
+        if (Input.GetButton("Jump") && canJump && jumpTimer <= 0)
         {
-            grounded = false;
+            canJump = false;
             v_y = jumpForce;
             _rb.gravityScale = gravityScaleRaise;
         }
